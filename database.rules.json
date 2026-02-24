@@ -1,0 +1,71 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      ".indexOn": ["email", "role", "createdAt"],
+      "$uid": {
+        ".read": "$uid === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        ".write": "$uid === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'"
+      }
+    },
+    "emergencies": {
+      ".indexOn": ["status", "createdAt", "userId", "severity"],
+      ".read": "auth !== null",
+      "$emergencyId": {
+        ".write": "auth !== null"
+      }
+    },
+    "devices": {
+      ".indexOn": ["userId", "status", "type"],
+      ".read": "auth !== null",
+      "$deviceId": {
+        ".write": true
+      }
+    },
+    "sessions": {
+      ".indexOn": ["userId", "dateTime", "status"],
+      ".read": "auth !== null",
+      "$sessionId": {
+        ".write": "auth !== null"
+      }
+    },
+    "locations": {
+      ".indexOn": ["userId", "timestamp"],
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "sosAlerts": {
+      ".indexOn": ["userId", "status", "createdAt"],
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "sensorData": {
+      ".indexOn": ["deviceId", "timestamp"],
+      ".read": true,
+      ".write": true
+    },
+    "resqpulse": {
+      ".read": true,
+      ".write": true,
+      "live": {
+        ".read": true,
+        ".write": true,
+        ".indexOn": ["timestamp"]
+      }
+    },
+    "notifications": {
+      ".indexOn": ["userId", "timestamp", "read"],
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "settings": {
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "analytics": {
+      ".read": "root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      ".write": "root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    }
+  }
+}

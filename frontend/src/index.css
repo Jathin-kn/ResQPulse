@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-slate-950 text-white font-sans;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html {
+  color-scheme: dark;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
+
+/* Smooth transitions */
+@layer components {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-lg p-6;
+  }
+
+  .card-hover {
+    @apply card hover:border-slate-700 transition-smooth cursor-pointer;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-smooth;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 hover:bg-blue-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply btn bg-slate-800 hover:bg-slate-700 text-white;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 hover:bg-red-700 text-white;
+  }
+
+  .btn-success {
+    @apply btn bg-green-600 hover:bg-green-700 text-white;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-green-900/30 text-green-400;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-900/30 text-yellow-400;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-900/30 text-red-400;
+  }
+
+  .badge-info {
+    @apply badge bg-blue-900/30 text-blue-400;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-smooth;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-300 mb-2;
+  }
+}
